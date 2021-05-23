@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_base/utils/Strings.dart';
 import 'package:flutter_base/utils/theme.dart';
 import 'package:flutter_base/view/base/home.dart';
+import 'package:flutter_base/view/watchlist/all_coins.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -16,7 +17,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: Strings.appName,
-      home: Home(),
+      initialRoute: Strings.routeRoot,
+      routes: {
+        Strings.routeRoot: (context) => Home(),
+        Strings.routeAllCoins: (context) => AllCoins()
+      },
     );
   }
 }

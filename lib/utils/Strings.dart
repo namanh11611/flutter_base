@@ -1,16 +1,22 @@
 class Strings {
-  static String appName = 'Flutter Base';
-  static String homeTitle = 'Home';
+  static const String appName = 'Flutter Base';
+  static const String homeTitle = 'Home';
 
-  static String menuAccount = "Account";
-  static String menuHelp = "Help";
-  static String menuAboutUs = "About us";
-  static String menuOther = "Other";
+  static const String menuAccount = 'Account';
+  static const String menuHelp = 'Help';
+  static const String menuAboutUs = 'About us';
+  static const String menuOther = 'Other';
 
-  static String btnAddPair = "Add";
+  static const String btnAddPair = 'Add';
 
-  static String bnbWatchlist = "Watchlist";
-  static String bnbAlert = "Alert";
-  static String bnbAnalytics = "Analytics";
-  static String bnbSettings = "Settings";
+  static const String bnbWatchlist = 'Watchlist';
+  static const String bnbAlert = 'Alert';
+  static const String bnbAnalytics = 'Analytics';
+  static const String bnbSettings = 'Settings';
+
+  static const String allCoins = 'All coins';
+
+
+  static const String routeRoot = '/';
+  static const String routeAllCoins = '/all_coins';
 }
