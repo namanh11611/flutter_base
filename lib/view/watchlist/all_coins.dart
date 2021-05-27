@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/model/Coin.dart';
+import 'package:flutter_base/model/WatchlistModel.dart';
 import 'package:flutter_base/utils/Strings.dart';
 import 'package:flutter_base/utils/theme.dart';
+import 'package:provider/provider.dart';
 
 class AllCoins extends StatefulWidget {
   const AllCoins({Key key}) : super(key: key);
@@ -18,6 +20,13 @@ class _AllCoinsState extends State<AllCoins> {
     Coin("ADA/USD", 400.00, 100.00, 25),
     Coin("LINK/USD", 50.00, 10.00, 20),
     Coin("YFI/USD", 50000.00, 10000.00, 20),
+    Coin("UNI/USD", 50000.00, 10000.00, 20),
+    Coin("BAKE/USD", 50000.00, 10000.00, 20),
+    Coin("CAKE/USD", 50000.00, 10000.00, 20),
+    Coin("DOGE/USD", 50000.00, 10000.00, 20),
+    Coin("BNB/USD", 50000.00, 10000.00, 20),
+    Coin("MATIC/USD", 50000.00, 10000.00, 20),
+    Coin("NEAR/USD", 50000.00, 10000.00, 20),
   ];
 
   @override
@@ -35,6 +44,13 @@ class _AllCoinsState extends State<AllCoins> {
               },
             );
           }),
+          actions: _watchlist.length != 0 ? [
+            IconButton(
+                icon: Icon(Icons.check),
+                onPressed: () {
+                  Navigator.pop(context);
+                })
+          ] : [],
         ),
         body: _buildAllCoinsList()
     );
@@ -42,7 +58,6 @@ class _AllCoinsState extends State<AllCoins> {
 
   Widget _buildAllCoinsList() {
     return ListView.builder(
-        padding: const EdgeInsets.all(16),
         itemCount: _coins.length,
         itemBuilder: (BuildContext _context, int i) {
           // if (i.isOdd) {
@@ -59,10 +74,13 @@ class _AllCoinsState extends State<AllCoins> {
     return ListTile(
       title: Text(
         coin.mName,
+        style: TextStyle(
+          color: kBlueGray0
+        ),
       ),
       trailing: Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.red : null,
+        alreadySaved ? Icons.check_box : Icons.check_box_outline_blank,
+        color: alreadySaved ? kAccentColor : kBlueGray0,
       ),
       onTap: () {
         setState(() {
@@ -70,6 +88,8 @@ class _AllCoinsState extends State<AllCoins> {
             _watchlist.remove(coin);
           } else {
             _watchlist.add(coin);
+            final wl = context.read<WatchlistModel>();
+            wl.add(coin);
           }
         });
       },
