@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_base/model/Coin.dart';
 import 'package:flutter_base/model/WatchlistModel.dart';
@@ -48,6 +50,9 @@ class _AllCoinsState extends State<AllCoins> {
             IconButton(
                 icon: Icon(Icons.check),
                 onPressed: () {
+                  for (Coin coin in _watchlist) {
+                    Provider.of<WatchlistModel>(context, listen: false).add(coin);
+                  }
                   Navigator.pop(context);
                 })
           ] : [],
@@ -57,19 +62,19 @@ class _AllCoinsState extends State<AllCoins> {
   }
 
   Widget _buildAllCoinsList() {
-    return ListView.builder(
-        itemCount: _coins.length,
-        itemBuilder: (BuildContext _context, int i) {
-          // if (i.isOdd) {
-          //   return Divider();
-          // }
-          //
-          // final int index = i ~/ 2;
-          return _buildRow(_coins[i]);
-        });
+    return Consumer<WatchlistModel>(builder: (context, list, child) {
+      for (Coin coin in list.coins) {
+        log("henzy coin ${coin.mName}");
+      }
+      return ListView.builder(
+          itemCount: _coins.length,
+          itemBuilder: (BuildContext _context, int i) {
+            return _buildRow(_coins[i], list.coins.contains(_coins[i]));
+          });
+    });
   }
 
-  Widget _buildRow(Coin coin) {
+  Widget _buildRow(Coin coin, bool isSaved) {
     final alreadySaved = _watchlist.contains(coin);
     return ListTile(
       title: Text(
@@ -88,8 +93,6 @@ class _AllCoinsState extends State<AllCoins> {
             _watchlist.remove(coin);
           } else {
             _watchlist.add(coin);
-            final wl = context.read<WatchlistModel>();
-            wl.add(coin);
           }
         });
       },
