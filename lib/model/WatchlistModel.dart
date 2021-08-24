@@ -13,6 +13,15 @@ class WatchlistModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void remove(Coin coinRemoved) {
+    for (Coin coin in _coins) {
+      if (coin.mId == coinRemoved.mId) {
+        _coins.remove(coin);
+        notifyListeners();
+      }
+    }
+  }
+
   void removeAll() {
     _coins.clear();
     notifyListeners();
