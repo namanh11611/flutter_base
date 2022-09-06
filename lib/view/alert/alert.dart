@@ -3,7 +3,7 @@ import 'package:flutter_base/utils/Strings.dart';
 import 'package:flutter_base/utils/theme.dart';
 
 class Alert extends StatelessWidget {
-  const Alert({Key key}) : super(key: key);
+  const Alert({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

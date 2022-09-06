@@ -9,7 +9,7 @@ import 'package:flutter_base/view/settings/settings.dart';
 import 'package:flutter_base/view/watchlist/watchlist.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
     return Text(title);
   }
 
-  List<Widget> _buildAppBarActions() {
+  List<Widget>? _buildAppBarActions() {
     return _selectedIndex == Constants.NAV_WATCHLIST
         ? <Widget>[
             IconSearch(),
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
         : null;
   }
 
-  Widget _buildFloatingActionButton() {
+  Widget? _buildFloatingActionButton() {
     return _selectedIndex == Constants.NAV_WATCHLIST
         ? FloatingActionButton.extended(
             icon: const Icon(Icons.add),
@@ -110,7 +110,7 @@ class _HomeState extends State<Home> {
 }
 
 class IconSearch extends StatelessWidget {
-  const IconSearch({Key key}) : super(key: key);
+  const IconSearch({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +124,7 @@ class IconSearch extends StatelessWidget {
 }
 
 class IconSort extends StatelessWidget {
-  const IconSort({Key key}) : super(key: key);
+  const IconSort({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

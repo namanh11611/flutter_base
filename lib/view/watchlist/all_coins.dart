@@ -6,7 +6,7 @@ import 'package:flutter_base/utils/theme.dart';
 import 'package:provider/provider.dart';
 
 class AllCoins extends StatefulWidget {
-  const AllCoins({Key key}) : super(key: key);
+  const AllCoins({Key? key}) : super(key: key);
 
   @override
   _AllCoinsState createState() => _AllCoinsState();

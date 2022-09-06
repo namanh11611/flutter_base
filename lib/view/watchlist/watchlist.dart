@@ -1,12 +1,10 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/model/WatchlistModel.dart';
 import 'package:flutter_base/utils/theme.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class Watchlist extends StatefulWidget {
-  const Watchlist({Key key}) : super(key: key);
+  const Watchlist({Key? key}) : super(key: key);
 
   @override
   _WatchlistState createState() {
@@ -71,8 +69,8 @@ class _WatchlistState extends State<Watchlist> {
 
 Future<void> loadData() async {
   String dataURL = 'https://api.binance.com/api/v3/ticker/24hr';
-  http.Response response = await http.get(dataURL);
+  // http.Response response = await http.get(dataURL);
   // setState(() {
-  List<dynamic> lists = jsonDecode(response.body);
+  // List<dynamic> lists = jsonDecode(response.body);
   // });
 }
